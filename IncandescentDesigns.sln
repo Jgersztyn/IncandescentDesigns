@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncandescentDesigns", "IncandescentDesigns\IncandescentDesigns.csproj", "{BF69C50A-11CF-4A15-A3DA-529F67785A31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamNUnitTest", "TeamNUnitTest\TeamNUnitTest.csproj", "{77534D96-33C9-44AC-A134-E5A7ACAFBF4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF69C50A-11CF-4A15-A3DA-529F67785A31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF69C50A-11CF-4A15-A3DA-529F67785A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF69C50A-11CF-4A15-A3DA-529F67785A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF69C50A-11CF-4A15-A3DA-529F67785A31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77534D96-33C9-44AC-A134-E5A7ACAFBF4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77534D96-33C9-44AC-A134-E5A7ACAFBF4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77534D96-33C9-44AC-A134-E5A7ACAFBF4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77534D96-33C9-44AC-A134-E5A7ACAFBF4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://lryan01.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = IncandescentDesigns\\IncandescentDesigns.csproj
+		SccProjectName1 = IncandescentDesigns
+		SccLocalPath1 = IncandescentDesigns
+		SccProjectUniqueName2 = TeamNUnitTest\\TeamNUnitTest.csproj
+		SccProjectName2 = TeamNUnitTest
+		SccLocalPath2 = TeamNUnitTest
+	EndGlobalSection
+EndGlobal

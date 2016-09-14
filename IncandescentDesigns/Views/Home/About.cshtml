@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "We are GenieTech";
+}
+
+<div class="jumbotron">
+    <p class="lead"> </p>
+    <div class="container">
+
+        <div class="row" style="display:flex; flex-wrap: wrap;">
+            <div class="col-xs-12 col-md-12">
+                <div class="container text-center">
+                    <div class="well-sm">
+                        <h2>
+                            @ViewBag.Title
+                            <img src="~/Images/logo.png" />
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="row" style="display:flex; flex-wrap: wrap;">
+                    <div class="col-xs-12 col-md-12">
+                        <h3>Our Development Team</h3>
+                        <hr />
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <h4 class="list-group-item-heading">Danielle</h4>
+                                <p class="list-group-item-text"> <img src="~/Images/Danielle.png" /> - An intelligent low-level developer and CSS expert.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h4 class="list-group-item-heading">Howard</h4>
+                                <p class="list-group-item-text"><img src="~/Images/Howard.png" /> - A database expert and ASP.NET veteran.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h4 class="list-group-item-heading">Jason</h4>
+                                <p class="list-group-item-text"><img src="~/Images/Jason.png" /> - A well-rounded engineer with front-end and back-end skills.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h4 class="list-group-item-heading">Lauren</h4>
+                                <p class="list-group-item-text"><img src="~/Images/Lauren.png" /> - The cube master and hardware specialist.</p>
+                            </li>
+                        </ul>
+
+                        <button onclick="location.href='@Url.Action("Contact", "Home")'" class="btn btn-block">Contact Us</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿
+<head>
+    <style>
+        .colorpicker {
+            margin-left: 64px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<script src="//code.jquery.com/jquery-1.12.0.js"></script>
+<link rel="stylesheet" href="~/Content/colorpicker.css" type="text/css" />
+<link rel="stylesheet" media="screen" type="text/css" href="~/Content/layout.css" />
+<script src="~/Scripts/ColorPick/eye.js"></script>
+<script src="~/Scripts/ColorPick/jquery.js"></script>
+<script src="~/Scripts/ColorPick/layout.js"></script>
+<script src="~/Scripts/ColorPick/utils.js"></script>
+<script src="~/Scripts/ColorPick/colorpicker.js"></script>
+
+<script type="text/javascript">
+    $('#colorSelector').ColorPicker({
+        color: '#0000ff',
+        onShow: function (colpkr) {
+            $(colpkr).fadeIn(500);
+            return false;
+        },
+        onHide: function (colpkr) {
+            $(colpkr).fadeOut(500);
+            return false;
+        },
+        onChange: function (hsb, hex, rgb) {
+            $('#colorSelector div').css('backgroundColor', '#' + hex);
+        }
+    });
+</script>
+
+@*The id is needed to actual tell the HTML to display this Javascript element*@
+<div id="colorpickerHolder"></div>

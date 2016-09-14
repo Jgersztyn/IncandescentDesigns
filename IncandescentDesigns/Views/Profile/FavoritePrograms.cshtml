@@ -1,0 +1,57 @@
+﻿@model IEnumerable<IncandescentDesigns.Models.FavoriteProgram>
+
+<div class="jumbotron">
+    <h3>My Favorite Programs</h3>
+
+    <table class="table">
+        <tr>
+            <th>
+                File Name
+            </th>
+            <th>
+                Program Description
+            </th>
+            <th>
+                Get Program
+            </th>
+            <th>
+                Details
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StoredFileModel.FileName)
+                </td>
+                <td>
+                    @if (item.StoredFileModel.Description == null || item.StoredFileModel.Description == "")
+                    {
+                        @Html.ActionLink("Add Description", "EditProgram", "Profile", new { id = item.ID }, null)
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.StoredFileModel.Description)
+                    }
+                </td>
+                <td>
+                    @if (item.StoredFileModel.FileName != null)
+                    {
+                        @Html.ActionLink("Download", "Download", "Profile", new { id = item.ID }, null)
+                        @*A button is below*@
+                        @*<button onclick="location.href='@Url.Action("Download", "Profile", new { id = item.ID }, null)'" class="btn btn-primary">Download</button>*@
+                    }
+                </td>
+                <td>
+                    @if (item.StoredFileModel.FileName != null)
+                    {
+                        @Html.ActionLink("Change Details", "ProgramDetails", "Profile", new { id = item.ID }, null)
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

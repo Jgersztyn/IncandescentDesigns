@@ -1,0 +1,40 @@
+﻿@model List<IncandescentDesigns.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Searching for users";
+}
+<div class="jumbotron">
+    <h2>Search screen</h2>
+
+    <h3>Enter search criteria. Enter only names or email addresses. Partials are acceptable.</h3>
+
+    @using (Html.BeginForm())
+    {
+        <p>
+            Find by name: @Html.TextBox("SearchString")
+            <input type="submit" value="Search" />
+        </p>
+    }
+
+
+    @if (Model != null)
+    {
+        <table class="table">
+            <tr>
+                <td>
+                    Email
+                </td>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Profile", "Index", "Profile", new { id = item.Id }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</div>

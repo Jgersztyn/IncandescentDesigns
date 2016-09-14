@@ -1,0 +1,59 @@
+﻿@model IncandescentDesigns.Models.Forum
+@using IncandescentDesigns.Models; 
+@{
+    ViewBag.Title = "Sub Forum";
+}
+
+<div class="jumbotron" style="background:#939393 !important">
+
+    <div class="well">
+        <h5 class="text-center">@Model.ForumTitle</h5>
+    </div>
+
+    @*<div class="pull-left">
+        @Html.ActionLink("Start a new thread", "CreateTopic", new { ForumId = Model.ForumId }, null)
+    </div>*@
+    
+    <div class="pull-left" style="padding-bottom:10px">
+        <tutorialButton-a onclick="location.href='@Url.Action("CreateTopic", "Forum", new { ForumId = Model.ForumId }, null)'" class="btn-sm btn-info" style="width:100%">Start a new thread</tutorialButton-a>
+    </div>
+
+    <table class="table forum table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Thread Title
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Threads)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Title, "Topic", new { id = item.ThreadId }, null)
+                    </td>
+                    @if (item.UserId != null)
+                    {
+                        <td>
+                            @GetAuthor(item.UserId)
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+@functions{
+    public string GetAuthor(string id)
+    {
+        ApplicationDbContext db = new ApplicationDbContext();
+        string email = db.Users.Find(id).Email;
+
+        return email;
+    }
+}
+
+

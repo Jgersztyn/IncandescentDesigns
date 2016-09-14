@@ -1,0 +1,36 @@
+﻿@model IncandescentDesigns.Models.NewsFeed
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<style>
+    p-news {
+    height: 100px;
+    line-height: 20px; /* Height / no. of lines to display */
+    overflow: hidden;
+}
+</style>
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <br>
+            <p><img alt="" src="@Model.Image" style="padding-right:10px" align="left"><h3>@Model.Title</h3>@Model.Body</p>
+            <div class="col-xs-10 col-md-10">
+                <div class="row">
+                    <div class="col-xs-9 col-md-9">
+                        <h4>
+                            <small style="font-family:courier,'new courier';" class="text-muted">@Model.PostDate  • @Html.ActionLink("Return to Past News", "Index") • @Html.ActionLink("Home", "Index", "Home") </small>
+                        </h4>
+                    </div>
+                    <div class="col-xs-3 col-md-3"></div>
+                </div>
+                <br><br>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+
+@Styles.Render("~/Content/imageScaling.css")

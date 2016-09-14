@@ -1,0 +1,21 @@
+﻿
+
+@{
+    ViewBag.Title = "UpdateProfilePic";
+}
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h2>Select browse and find the picture you would like to make your profile picture.</h2>
+        <form action="@Url.Action("UpdateProfilePic")" method="post" enctype="multipart/form-data">
+
+            <label for="file">Filename:</label>
+            <input type="file" name="file" id="file4" />
+            <span class="help-block" style="font-size:11px !important">Only .jpg and .png files are allowed</span>
+            <br />
+            <input type="submit" value="Submit" />
+
+        </form>
+    </div>
+</div>

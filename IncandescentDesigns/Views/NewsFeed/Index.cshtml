@@ -1,0 +1,36 @@
+﻿@model IEnumerable<IncandescentDesigns.Models.NewsFeed>
+@using IncandescentDesigns.Helpers
+
+<style>
+    p-news {
+        height: 100px;
+        line-height: 20px; /* Height / no. of lines to display */
+        overflow: hidden;
+    }
+</style>
+
+<div class="jumbotron">
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <br>
+
+
+                <div class="col-md-6">
+                    <h3>@item.Title</h3>
+                    <div><p-news>@item.Body</p-news></div>
+                    <p-news align="left">
+                        <small style="font-family:courier,'new courier';" class="text-muted">@item.PostDate  • @Html.ActionLink("Read more", "Story", "NewsFeed", new { id = item.PostID }, null)</small>
+                    </p-news>
+            </div>
+            <br><br>
+            <hr>
+        }
+    </div>
+    <div>
+        <button onclick="location.href='@Url.Action("Search", "NewsFeed")'" class="btn bg-primary" style="width:100%">Search All News</button>
+    </div>
+</div>
+
+@Styles.Render("~/Content/imageScaling.css")
