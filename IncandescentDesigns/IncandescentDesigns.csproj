@@ -431,9 +431,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Properties\PublishProfiles\IncandescentDesigns - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\IncandescentDesignss - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\IncandescentDesignssprint12 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\incandescentdesigns - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrapOld.min.js" />
     <Content Include="Scripts\ColorPick\colorpicker.js" />
@@ -455,7 +453,9 @@
     <None Include="Scripts\_references.js" />
     <Content Include="Scripts\simulator.js" />
     <Content Include="Scripts\three.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

@@ -138,6 +138,6 @@ C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\Incande
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\IncandescentDesigns\bin\ru\System.Spatial.resources.dll
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\IncandescentDesigns\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\IncandescentDesigns\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\IncandescentDesigns\obj\Debug\IncandescentDesigns.csprojResolveAssemblyReference.cache
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\IncandescentDesigns\obj\Debug\IncandescentDesigns.dll
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\IncandescentDesigns\obj\Debug\IncandescentDesigns.pdb
-C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\IncandescentDesigns\obj\Debug\IncandescentDesigns.csprojResolveAssemblyReference.cache

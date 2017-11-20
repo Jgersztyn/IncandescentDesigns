@@ -95,12 +95,14 @@ namespace IncandescentDesigns
             var myMessage = new SendGridMessage();
             myMessage.AddTo(message.Destination);
             myMessage.From = new System.Net.Mail.MailAddress(
-                                "GenieTech@mail.wou.edu", "Howard");
+                "Genietechwou@gmail.com", "Jason");
+              //"GenieTech@mail.wou.edu", "Howard");
             myMessage.Subject = message.Subject;
             myMessage.Text = message.Body;
             myMessage.Html = message.Body;
 
-            var apiKey = "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";
+            //var apiKey = "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";
+            var apiKey = "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";
 
             // Create a Web transport for sending email.
             var transportWeb = new Web(apiKey);

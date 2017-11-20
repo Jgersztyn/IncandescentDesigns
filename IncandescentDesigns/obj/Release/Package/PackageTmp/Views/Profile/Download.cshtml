@@ -1,0 +1,23 @@
+﻿@model IncandescentDesigns.Models.StoredFileModel
+
+@{
+    ViewBag.Title = "Download";
+}
+
+<div class="jumbotron">
+    <p class="lead"> </p>
+    <div class="container">
+
+        <div class="row" style="display:flex; flex-wrap: wrap;">
+            <div class="col-xs-12 col-md-12">
+
+                <div class="container text-center">
+                    <p>@*empty line again*@</p>
+                    <p>Download your new program by clicking the link below!</p>
+                    <p>@Html.ActionLink("Download", "DownloadFile", "Profile", new { id = Model.StoredFileId }, null)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

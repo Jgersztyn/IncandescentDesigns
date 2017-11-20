@@ -1,0 +1,6 @@
+﻿/*Scales images to an acceptable size*/
+
+img {
+    max-height: 400px;
+    max-width: 400px;
+}

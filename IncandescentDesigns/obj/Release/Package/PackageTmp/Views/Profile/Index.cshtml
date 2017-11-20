@@ -1,0 +1,95 @@
+﻿@model IncandescentDesigns.Models.Profile
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Profile";
+}
+
+@if (Model == null)
+{
+    <div class="jumbotron">
+        <div class="container">
+            <h3>Profile not set up yet.</h3>
+        </div>
+    </div>
+}
+else
+{
+    if (Model.ProfileVis == false && !User.Identity.GetUserId().Equals(Model.UserId) && !User.IsInRole("admin"))
+    {
+        <div class="jumbotron">
+            <div class="container">
+                <h2>User has marked their profile as private.</h2>
+            </div>
+        </div>
+    }
+    else {
+        <div class="jumbotron">
+            <div class="container">
+                @if (User.IsInRole("admin") || Model.UserId.Equals(User.Identity.GetUserId()) || Model.PictureVis == true)
+                {
+                    <h3>My Profile</h3>
+                    <img src="@Model.PictureLocation" />
+                }
+                <table class="table">
+                    @if (User.IsInRole("admin") || Model.UserId.Equals(User.Identity.GetUserId()) || Model.NameVis == true)
+                    {
+                        <tr>
+                            <td>
+                                Name:
+                            </td>
+                            <td>
+                                @Model.Name
+                            </td>
+                        </tr>
+                    }
+                    @if (User.IsInRole("admin") || Model.UserId.Equals(User.Identity.GetUserId()) || Model.PhoneNumVis == true)
+                    {
+                        <tr>
+                            <td>
+                                Phone Number:
+                            </td>
+                            <td>
+                                @Model.PhoneNumber
+                            </td>
+                        </tr>
+                    }
+                    @if (User.IsInRole("admin") || Model.UserId.Equals(User.Identity.GetUserId()) || Model.AboutVis == true)
+                    {
+                        <tr>
+                            <td>
+                                About Me:
+                            </td>
+                            <td>
+                                @Model.AboutMe
+                            </td>
+                        </tr>
+                    }
+                    @if (User.IsInRole("admin") || Model.UserId.Equals(User.Identity.GetUserId()) || Model.InterestsVis == true)
+                    {
+                        <tr>
+                            <td>
+                                My Interests:
+                            </td>
+                            <td>
+                                @Model.Interests
+                            </td>
+                        </tr>
+                    }
+                </table>
+                @if (User.IsInRole("admin") || Model.UserId.Equals(User.Identity.GetUserId()) || Model.FavoriteProgsVis == true)
+                {
+                    <h3>@Html.ActionLink("My Favorite Programs", "FavoritePrograms", new { id = Model.UserId })</h3>
+                }
+                @if (User.Identity.IsAuthenticated && User.Identity.GetUserId().Equals(Model.UserId))
+                {
+                    <h3>@Html.ActionLink("Edit Profile", "Edit", new { id = Model.UserId })</h3>
+                    <h3>@Html.ActionLink("Change Email", "ChangeEmail", "Account")</h3>
+                    <h3>@Html.ActionLink("Change Profile Picture", "UpdateProfilePic")</h3>
+                    @*<h3>@Html.ActionLink("Change profile security settings","SecuritySettings")</h3>*@
+                }
+            </div>
+        </div>
+    }
+}
+
+@Styles.Render("~/Content/imageScaling.css")

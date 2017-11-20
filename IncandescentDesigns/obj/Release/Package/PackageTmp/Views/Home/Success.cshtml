@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Success";
+}
+
+<script>
+    window.onunload = function (event) {
+        alert("Using back from this page will cause a cache miss error. When you get the error page just hit refresh. Or please just use the Create a Design tab to get back to the create form");
+        //window.confirm("Using back from this page will cause a cache miss error. When you get the error page just hit refresh. Or please just use the \"Create a Design\" tab to get back to the create form");
+    };
+</script>
+
+<div class="jumbotron">
+    <p class="lead"> </p>
+    <div class="container">
+
+        <div class="row" style="display:flex; flex-wrap: wrap;">
+            <div class="col-md-12">
+                <div class="container text-center">
+                    <p>Download your new program by clicking the link below!</p>
+                    <p>@Html.ActionLink("Download", "CreatePattern", "Home")</p>
+                </div>
+                @if (Context.User.Identity.IsAuthenticated && (Context.User.IsInRole("admin") != true))
+                {
+                    <div class="container text-center">
+                        <p>Or save it to your user profile!</p>
+                        <p>@Html.ActionLink("Save Program", "SavePattern", "Home")</p>
+                    </div>
+                }
+                <div class="container text-center">
+                    <div>
+                        <script type="text/javascript">
+                            // Popup window code
+                            function newPopup(url) {
+                                popupWindow = window.open(
+                                    url, 'Simulator', 'location=no,height=550,width=650,resizable=0,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+                            }
+                        </script>
+                        <p>You may also view of a sample of your program before downloading.</p>
+                        <button onclick="newPopup('/Simulator')" class="btn btn-primary">View Program in Simulator</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

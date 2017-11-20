@@ -1,0 +1,27 @@
+﻿<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Simulator2D";
+}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+<div class="jumbotron">
+    <p class="lead"> </p>
+
+    <h2>Welcome to the panel simulator!</h2>
+    <p>Here you can see a preview of a cube displaying a 2D pattern.</p>
+
+    <div>
+        @*<script type="text/javascript">
+            $(document).ready(function () {
+                $('#simulatorTwoD').render();
+            });
+        </script>*@
+
+        @*<a class="btn btn-primary btn-lg" value="Change Color" style="color:white" onclick="setCol()">Animate</a>
+            <div id="simulatorTwoD"></div>*@
+
+    @Html.Partial("_SimulatorTwoD")
+
+</div>

@@ -1,0 +1,17 @@
+﻿@model IncandescentDesigns.Models.StoredFileModel
+
+@{
+    ViewBag.Title = "Program Details";
+}
+
+<div class="jumbotron">
+    <h4>Program Details</h4>
+    <hr>
+    <div>
+        <button onclick="location.href='@Url.Action("DeleteProgram", "Profile", new { id = Model.StoredFileId }, null)'" class="btn btn-primary">Delete the File</button>
+    </div>
+    <hr>
+    <div>
+        <button onclick="location.href='@Url.Action("EditProgram", "Profile", new { id = Model.StoredFileId }, null)'" class="btn btn-primary">Edit the File</button>
+    </div>
+</div>

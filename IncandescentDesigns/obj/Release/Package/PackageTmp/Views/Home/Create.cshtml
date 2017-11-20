@@ -1,0 +1,256 @@
+﻿@using Mvc.CascadeDropDown
+@model IncandescentDesigns.Models.CreateModels
+
+
+
+<div class="jumbotron">
+    <p class="lead"> </p>
+    <div class="container">
+        <div class="row" style="display:flex; flex-wrap: wrap;">
+            <div class="col-xs-12 col-md-12">
+
+                @{
+                    ViewBag.Title = "Make Your Vision Come True";
+                }
+
+                
+
+                @using (Html.BeginForm("ButtonAction", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="form-horizontal">
+
+                        <div class="well"><h3 class="text-center">@ViewBag.Title</h3><h4 class="text-center">Create Your Program</h4></div>
+                        
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.CubeSize, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-xs-10 col-md-10">
+
+                                @{ var disableCube = @ViewBag.disableCubeSize; }
+                                @if (disableCube)
+                                {
+                                    @Html.EditorFor(model => model.CubeSize, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                }
+                                else {
+                                    List<SelectListItem> listItems = new List<SelectListItem>();
+                                    listItems.Add(new SelectListItem
+                                    {
+                                        Text = "8x8",
+                                        Value = "8x8"
+                                    });
+                                    listItems.Add(new SelectListItem
+                                    {
+                                        Text = "4x4x4",
+                                        Value = "4x4x4"
+                                    });
+
+                                    @Html.DropDownListFor(model => model.CubeSize, listItems, "-- Select Cube Size --", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CubeSize, "", new { @class = "text-danger" })
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Pattern, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.ValidationMessageFor(model => model.AddedPatterns, "", new { @class = "text-danger" })
+                            <div class="col-xs-10 col-md-10">
+
+
+                                @Html.CascadingDropDownListFor(
+     expression: m => m.Pattern,
+     triggeredByProperty: m => m.CubeSize,  //Parent property that trigers dropdown data loading
+     url: Url.Action("GetPatterns", "Home"),  //Url of action that returns dropdown data
+     ajaxActionParamName: "cubesize",   //Parameter name for the selected parent value that url action receives
+     optionLabel: "-- Select Pattern --", // Option label
+     disabledWhenParrentNotSelected: true, //If true, disables dropdown until parrent dropdown selected
+     htmlAttributes: new { @class = "form-control" })
+
+
+                                @Html.ValidationMessageFor(model => model.Pattern, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                        <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+                        <link rel="stylesheet" href="~/Content/farbtastic.css" type="text/css" />
+
+
+                        @*This describes the location the color picker will appear on the webpage*@
+
+                        @*<div id="demo" style="color: red; font-size: 1.4em">jQuery.js is not present. You must install jQuery in this folder for the demo to work.</div>*@
+
+
+                        <div class="form-group row">
+                            <div class="col-xs-2 col-md-2"></div>
+                            <div class="col-xs-6 col-md-6">
+                                <div class="mid" id="picker"></div>
+                            </div>
+                            <div class="col-xs-4 col-md-4"></div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="control-label col-xs-2 col-md-2">
+                                <label for="color">Color</label>
+
+                            </div>
+                            <div class="col-xs-8 col-md-8">
+                                <input class="form-control" type="text" id="color" name="color" value="#FF0000" readonly="readonly" />
+                                <div style="margin-bottom: 10px;margin-top:10px;"> </div>
+                            </div>
+                            <div class="col-xs-2 col-md-2"></div>
+                        </div>
+
+                        @*<div class="form-group">
+                                @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+                                </div>
+                            </div>*@
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Sequence, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-xs-2 col-md-4">
+                                <p style="font-size:12px; color:white">Add patterns to drag them into the desired sequence for your program.</p>
+                                <script type="text/javascript">
+
+                                    $(document).ready(function() {
+                                        $("#sortable").sortable({ axis: "y" });
+                                    });
+
+                                    $(function() {
+                                        $("#submit-list").button();
+
+                                        $("#submit-list").click(function() {
+                                            // debugger;
+                                            $.ajax({
+                                                url: '/Home/ChangeSequence/',
+                                                data: { items: $("#sortable").sortable('toArray') },
+                                                type: 'post',
+                                                traditional: true
+                                            });
+                                        });
+
+                                    });
+                                </script>
+                                <div id='sequence'></div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Speed, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-xs-10 col-md-10">
+                                @Html.EditorFor(model => model.Speed, new { htmlAttributes = new { @class = "form-control", @Value = "0.0005", @maxLength="20" }  })
+                                <span class="help-block" style="font-size:11px !important">Please input a number in seconds.</span>
+                                @Html.ValidationMessageFor(model => model.Speed, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Duration, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-xs-10 col-md-10">
+                                @Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @class = "form-control", @Value = "5", @maxLength = "20" } })
+                                <span class="help-block" style="font-size:11px !important">A whole number that specifies how many times this pattern will run.</span>
+                                @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.FileName, htmlAttributes: new { @class = "control-label col-md-2", @maxLength = "20" })
+                            <div class="col-xs-10 col-md-10">
+                                @{ var disable = @ViewBag.disableFileName; }
+                                @if (disable)
+                                {      
+                                    @Html.EditorFor(model => model.FileName, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                }
+                                else
+                                {
+                                    @Html.EditorFor(model => model.FileName, new { htmlAttributes = new { @class = "form-control"} })
+                                }
+                                <span class="help-block" style="font-size:11px !important">Please do not enter filenames that begin with a numeric character.</span>
+                                @Html.ValidationMessageFor(model => model.FileName, "", new { @class = "text-danger" })
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-offset-2 col-xs-10 col-md-offset-2 col-md-10">
+                            <input id="submit-list" type="submit" name="submitButton" value="Create" class="btn btn-primary" style="margin-right: 50px" />
+                            <input type="submit" name="submitButton" value="Add" class="btn btn-primary" />
+                            <input type="submit" name="submitButton" value="Remove" class="btn btn-primary" />
+                        </div>
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.AddedPatterns, htmlAttributes: new { @class = "control-label col-md-2" , @style="display:none"})
+                        <div class="col-xs-10 col-md-10" style="display:none">
+                            @Html.TextAreaFor(model => model.AddedPatterns, new { @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.AddedPatterns, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                                    }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('#demo').hide();
+        $('#picker').farbtastic('#color');
+    });
+</script>
+
+<script>
+    var pList = @Html.Raw(Json.Encode(@ViewBag.patternList));
+
+    function makeUL(array) {
+        // Create the list element:
+        var list = document.createElement('ul');
+        list.id = "sortable";
+        list.classList.add("list-unstyled");
+
+        for (var i = 0; i < array.length; i++) {
+            // Create the list item:
+            var item = document.createElement('li');
+            item.style = "font-size:18px; font color:black; border-radius: 3px; text-align:center; cursor:pointer !important";
+            item.classList.add("ui-state-default");
+            item.id = i;
+
+            // Set its contents:
+            item.appendChild(document.createTextNode(array[i]));
+            
+            // Add it to the list:
+            list.appendChild(item);
+        }
+        // Finally, return the constructed list:
+        return list;
+    }
+
+    if (pList.length > 0) {
+        var aList = makeUL(pList);
+        document.getElementById('sequence').appendChild(aList);
+        //alert("not empty");
+    } /*else {
+        var para = document.createElement("p");
+        para.style = "font-size:12px";
+        var node = document.createTextNode("Add patterns to display the sequence your patterns will play, and you can rearrange them by clicking and dragging them into whatever order you wish.");
+
+        para.appendChild(node);
+
+        var element = document.getElementById('sequence');
+        element.appendChild(para);
+        //alert("empty");
+    }*/
+
+</script>
+

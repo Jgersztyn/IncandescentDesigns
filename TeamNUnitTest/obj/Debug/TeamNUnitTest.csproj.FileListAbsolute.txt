@@ -11,6 +11,7 @@ C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUn
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUnitTest\bin\Debug\roslyn\vbc.exe
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUnitTest\bin\Debug\roslyn\VBCSCompiler.exe
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUnitTest\bin\Debug\roslyn\VBCSCompiler.exe.config
+C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUnitTest\bin\Debug\TeamNUnitTest.dll.config
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUnitTest\bin\Debug\TeamNUnitTest.dll
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUnitTest\bin\Debug\TeamNUnitTest.pdb
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUnitTest\bin\Debug\IncandescentDesigns.dll
@@ -112,4 +113,3 @@ C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUn
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUnitTest\obj\Debug\TeamNUnitTest.csprojResolveAssemblyReference.cache
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUnitTest\obj\Debug\TeamNUnitTest.dll
 C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUnitTest\obj\Debug\TeamNUnitTest.pdb
-C:\Users\omgst\Source\Workspaces\IncandescentDesigns\IncandescentDesigns\TeamNUnitTest\bin\Debug\TeamNUnitTest.dll.config

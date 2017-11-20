@@ -1,0 +1,130 @@
+﻿@model PagedList.IPagedList<IncandescentDesigns.Models.ProgramModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Programs";
+}
+
+<div class="jumbotron">
+    <p class="lead"> </p>
+
+    <li class="container">
+        <h2>
+            User stored
+
+
+        </h2>
+
+        @*<p>
+               @Html.ActionLink("Create New", "Create")
+            </p*@>
+
+        @using (Html.BeginForm("Index", "ProgramModel", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="col-xs-1 col-md-1"></div>
+                <div class="col-xs-5 col-md-5">
+                    <label>Find by name</label> @Html.TextBox("nameSearch", ViewBag.NameFilter as string, new { @class = "form-control" })
+                </div>
+                <div class="col-xs-5 col-md-5">
+                    <label>Find by mood</label> @Html.TextBox("moodSearch", ViewBag.MoodFilter as string, new { @class = "form-control" })
+                </div>
+                <div class="col-xs-1 col-md-1"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-1 col-md-1"></div>
+                <div class="col-xs-5 col-md-5">
+                    <label>Find by owner</label> @Html.TextBox("ownerSearch", ViewBag.OwnerFilter as string, new { @class = "form-control" })
+                </div>
+                <div class="col-xs-5 col-md-5">
+                    <label>Minimum likes</label> @Html.TextBox("likesSearch", ViewBag.LikesFilter as string, new { @class = "form-control" })
+                </div>
+                <div class="col-xs-1 col-md-1"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-10 col-md-10"></div>
+                <div class="col-xs-2 col-md-2">
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </div>
+                
+            </div>
+
+
+
+            @*<div class="form-group">
+                    Find by name: @Html.TextBox("nameSearch", ViewBag.NameFilter as string)
+                    Find by mood: @Html.TextBox("moodSearch", ViewBag.MoodFilter as string)
+                    Find by owner: @Html.TextBox("ownerSearch", ViewBag.OwnerFilter as string)
+                    Minimum likes: @Html.TextBox("likesSearch", ViewBag.LikesFilter as string)
+                    <input type="submit" value="Search" />
+                </div>*@
+        }
+
+        <table class="table">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Owner
+                </th>
+                <th>
+                    @Html.ActionLink("Mood", "Index", new { sortOrder = ViewBag.MoodSortParm, nameFilter = ViewBag.NameFilter, moodFilter = ViewBag.MoodFilter, ownerFilter = ViewBag.OwnerFilter, likesFilter = ViewBag.LikesFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Likes", "Index", new { sortOrder = ViewBag.LikeSortParm, nameFilter = ViewBag.NameFilter, moodFilter = ViewBag.MoodFilter, ownerFilter = ViewBag.OwnerFilter, likesFilter = ViewBag.LikesFilter })
+                </th>
+                <th>
+                    Created On
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mood)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Likes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                    <td>
+                        @if (!String.IsNullOrEmpty(item.programLocation))
+                        {
+                        <td>
+                            <p><a href=@item.programLocation>Saved Program</a></p>
+                        </td>
+                        }
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                        @Html.ActionLink("Like", "Like", new { id = item.Id })
+                        @Html.ActionLink("Favorite", "Favorite", new { id = item.Id })
+                    </tr>
+            }
+
+        </table>
+
+        <br />
+
+
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, nameFilter = ViewBag.NameFilter, moodFilter = ViewBag.MoodFilter, ownerFilter = ViewBag.OwnerFilter, likesFilter = ViewBag.LikesFilter }))
+
+
+</div>
+</div>

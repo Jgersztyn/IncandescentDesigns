@@ -1,0 +1,43 @@
+﻿@model IEnumerable<IncandescentDesigns.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="jumbotron">
+    <h2>Users list</h2>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Roles)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Roles)
+                </td>
+                <td>
+                    @Html.ActionLink("Disable user", "Disable","Account", new { id = item.Id }, null) |
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }) | 
+                </td>
+                <td>
+                    @Html.ActionLink("Profile", "Index", "Profile", new { id = item.Id }, null)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

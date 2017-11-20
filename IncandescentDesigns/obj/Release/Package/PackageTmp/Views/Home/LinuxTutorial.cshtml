@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Linux Tutorial";
+}
+
+<div class="jumbotron">
+    <p class="lead"> </p>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-xs-12 col-md-12">
+
+                <ul class="list-group">
+                    <li class="list-group-item" style="font-size:18px">
+                        1. You can download the Arduino software <a href="https://www.arduino.cc/en/Main/Software">here</a>. Choose linux 32 or linux 54 bit installer, depending on your operating system.
+                        <p class="list-group-item-text"><img src="~/Images/arduinoSoftware.png" style="width:100%" /></p>
+                    </li>
+                    <li class="list-group-item" style="font-size:18px">
+                        2. Once the Arduino software is successfully downloaded, open a terminal and cd to your downloads folder. From there, run the commands "tar -xvf arduino-x.x.x-linuxZZ.tar.xz" (replace x.x.x with arudino version number and ZZ with operating system bit count), "cd arduino-1.6.8", and "./install.sh"
+                        <p class="list-group-item-text"><img src="~/Images/Unpack_Install.png" style="width:100%" /></p>
+                    </li>
+                    <li class="list-group-item" style="font-size:18px">
+                        3. Go <a href="https://github.com/unwiredben/Rainbowduino-v3">here</a>, and then click “Download ZIP” on the right hand side.
+                        <p class="list-group-item-text"><img src="~/Images/rainbowduinoLibrary.png" style="width:100%" /></p>
+                    </li>
+                    <li class="list-group-item" style="font-size:18px">
+                        4. Unpack the rainbowdunio zip from the GUI, or run the command "unzip Rainbowduino-v3-master.zip -d Rainbowduino" (If you do not have the command unzip, download unzip using your distros package manager). Then, move the Rainbowduino folder to the arduino libraries folder. If you installed to default location, it is in ~/Downloads/arduino-x.x.x/libraries
+                        <p class="list-group-item-text"><img src="~/Images/move_libraries_linux.png" style="width:100%" /></p>
+                    </li>
+                    <li class="list-group-item" style="font-size:18px">
+                        5. Open the arduino IDE and go to the Tools menu. Verify that board is set to "Arduino Duemilanove or Diecimila" and Processor is set to "ATmega328". If you have your board plugged in, verify the board is selected in the port menu.
+                        <p class="list-group-item-text"><img src="~/Images/Verify_Menu.png" style="width:100%" /></p>
+                    </li>
+                    <li class="list-group-item" style="font-size:18px">
+                        6. Now, click "Incandescent Designs" in the top left corner (of this page), and then select “Create a new LED Pattern.”
+                        <p class="list-group-item-text"><img src="~/Images/HomePageLinux.png" style="width:100%" /></p>
+                    </li>
+                    <li class="list-group-item" style="font-size:18px">
+                        7. Once you are to the "Create" form choose whatever pattern and customization you would like to have.
+                        <p class="list-group-item-text"><img src="~/Images/CreatePageLinux.png" style="width:100%" /></p>
+                    </li>
+                    <li class="list-group-item" style="font-size:18px">
+                        8. When you are done completing the form click “Create”, and a “.ino” file will be downloaded to your computer (like the example.ino in the bottom-left corner). Click "Save File" if prompted to do so by your browser.
+                        <p class="list-group-item-text"><img src="~/Images/CreatedLinux.png" style="width:100%" /></p>
+                    </li>
+                    <li class="list-group-item" style="font-size:18px">
+                        9. Click on the downloaded file, and it should tell you that the file needs to be inside an Arduino sketch, and click “OK.”
+                        <p class="list-group-item-text"><img src="~/Images/CreateFolderLinux.png" style="width:100%" /></p>
+                    </li>
+                    <li class="list-group-item" style="font-size:18px">
+                        10. Plug in your board if it isn’t already plugged in, and then go to sketch -> upload, and wait for your pattern to run!
+                        <p class="list-group-item-text"><img src="~/Images/RunLinux.png" style="width:100%" /></p>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

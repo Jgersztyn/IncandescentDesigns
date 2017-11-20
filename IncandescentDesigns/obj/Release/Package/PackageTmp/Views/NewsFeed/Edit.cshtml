@@ -1,0 +1,84 @@
+﻿@model IncandescentDesigns.Models.NewsFeed
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit a News Post</h2>
+
+<div class="jumbotron" id="row-form">
+    <h4>Update info below:</h4>
+    <p class="lead"> </p>
+
+    <div class="container">
+        <div class="row" style="display:flex; flex-wrap: wrap;">
+            <div class="col-xs-12 col-md-12">
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.PostID)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-xs-10 col-md-10">
+                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-xs-10 col-md-10">
+                                @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-xs-10 col-md-10">
+                                @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PostDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-xs-10 col-md-10">
+                                @Html.EditorFor(model => model.PostDate, new { htmlAttributes = new { @class = "form-control" } })
+                                <span class="help-block" style="font-size:11px !important">This is the current time on your system</span>
+                                @Html.ValidationMessageFor(model => model.PostDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Attachment, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-xs-10 col-md-10">
+                                <span class="help-block" style="font-size:11px !important">Only .jpg and .png files are allowed</span>
+                                <input type="file" name="Attachment" class="input-files" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-offset-2 col-xs-10 col-md-offset-2 col-md-10">
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

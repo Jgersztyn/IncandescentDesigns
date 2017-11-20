@@ -25,16 +25,4 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://lryan01.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = IncandescentDesigns\\IncandescentDesigns.csproj
-		SccProjectName1 = IncandescentDesigns
-		SccLocalPath1 = IncandescentDesigns
-		SccProjectUniqueName2 = TeamNUnitTest\\TeamNUnitTest.csproj
-		SccProjectName2 = TeamNUnitTest
-		SccLocalPath2 = TeamNUnitTest
-	EndGlobalSection
 EndGlobal

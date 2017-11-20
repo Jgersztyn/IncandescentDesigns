@@ -95,25 +95,33 @@ namespace IncandescentDesigns.Controllers
         {
             if (ModelState.IsValid)
             {
+                //This block of code is needed when using blob storage to save images
+                //var file = newsFeed.Attachment;
+                //if (file != null)
+                //{
+                //    string fileExtension = file.FileName;
+                //    fileExtension = fileExtension.Substring(fileExtension.Length - 4).ToLower();
+                //    if (fileExtension == "jpeg" || fileExtension == ".jpg" || fileExtension == ".png")
+                //    {
+                //        //set up the image for upload
+                //        ImageHandler bh = new ImageHandler("images");
+                //        string tmp = bh.Upload(file);
+                //        newsFeed.Image = tmp;
+                //    }
+                //    //exention type is not valid
+                //    else
+                //    {
+                //        ModelState.AddModelError("", "Image may only be PNG or JPG.");
+                //        return View("Create", newsFeed);
+                //    }
+                //}
 
+                //remove this block is usin blob storage
                 var file = newsFeed.Attachment;
                 if (file != null)
                 {
-                    string fileExtension = file.FileName;
-                    fileExtension = fileExtension.Substring(fileExtension.Length - 4).ToLower();
-                    if (fileExtension == "jpeg" || fileExtension == ".jpg" || fileExtension == ".png")
-                    {
-                        //set up the image for upload
-                        ImageHandler bh = new ImageHandler("images");
-                        string tmp = bh.Upload(file);
-                        newsFeed.Image = tmp;
-                    }
-                    //exention type is not valid
-                    else
-                    {
-                        ModelState.AddModelError("", "Image may only be PNG or JPG.");
-                        return View("Create", newsFeed);
-                    }
+                    newsFeed.Image = new byte[newsFeed.Attachment.ContentLength];
+                    newsFeed.Attachment.InputStream.Read(newsFeed.Image, 0, newsFeed.Image.Length);
                 }
 
                 newsFeed.PostDate = DateTime.Now;
@@ -153,13 +161,27 @@ namespace IncandescentDesigns.Controllers
             if (ModelState.IsValid)
             {
 
+                //This code portion is needed for the blob storage of images
+                //var file = newsFeed.Attachment;
+                //if (file != null)
+                //{
+                //    ImageHandler bh = new ImageHandler("images");
+                //    string tmp = bh.Upload(file);
+                //    newsFeed.Image = tmp;
+                //}
+
+                //remove this block is using bloc storage
                 var file = newsFeed.Attachment;
                 if (file != null)
                 {
-                    ImageHandler bh = new ImageHandler("images");
-                    string tmp = bh.Upload(file);
-                    newsFeed.Image = tmp;
+                    newsFeed.Image = new byte[newsFeed.Attachment.ContentLength];
+                    newsFeed.Attachment.InputStream.Read(newsFeed.Image, 0, newsFeed.Image.Length);
                 }
+                else
+                {
+                    newsFeed.Image = null;
+                }
+
                 db.Entry(newsFeed).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

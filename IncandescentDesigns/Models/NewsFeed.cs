@@ -19,14 +19,14 @@ namespace IncandescentDesigns.Models
         public string Author { get; set; }
         [Required]
         public DateTime PostDate { get; set; }
-
-        //public string Picture { get; set; }
         [NotMapped]
         [Display(Name = "Header Image")]
         public HttpPostedFileBase Attachment { get; set; }
-        public string Image { get; set; }
 
-        //[Display(Name = "image display")]
-        //public bool DisplayItem { get; set; }
+        //Image needs to be a string if we are using blob storage
+        //public string Image { get; set; }
+        //READ ABOVE
+        public byte[] Image { get; set; }
+
     }
 }

@@ -1,0 +1,39 @@
+﻿@model ICollection<IncandescentDesigns.Models.Forum>
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Forum";
+}
+
+<div class="jumbotron" style="background:#939393 !important">
+    <div class="well">
+        <h5 class="text-center">Welcome to Incandescent Designs forums</h5>
+    </div>
+
+
+    <table class="table forum table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.ForumTitle, "SubForum", new { id = item.ForumId }, null)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,44 @@
+﻿@model IncandescentDesigns.Models.PremadeProgramModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div class="jumbotron">
+    <p class="lead"> </p>
+    <div class="container">
+        <div class="container text-center">
+
+            <div class="row" style="display:flex; flex-wrap: wrap;">
+                <div class="col-xs-12 col-md-12">
+
+                    @*Info about the file here*@
+                    <h2>@Model.Title</h2>
+                    <p>
+                        @if (Model.Image != null)
+                        {
+                        <img alt="" src="@Model.Image" style="padding-right:10px" align="left">
+                        }
+                    </p>
+                    <h3>@Model.Description</h3>
+
+                    <div>
+                        <p>@*empty line again*@</p>
+                        <p>Download the verified program by clicking the link below:</p>
+                        <p>@Html.ActionLink("Download", "Download", "PremadeProgram", new { id = Model.ID }, null)</p>
+                    </div>
+
+                    @*<div>
+                        <button onclick="location.href='@Url.Action("Index", "Simulator")'" class="btn btn-primary">View Program in Simulator</button>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@Styles.Render("~/Content/imageScaling.css")

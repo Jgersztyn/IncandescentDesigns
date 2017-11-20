@@ -79,7 +79,29 @@ namespace IncandescentDesigns.Models
             if (ir.Succeeded == false)
                 return ir.Succeeded;
             ir = um.AddToRole(user.Id, "admin");
+
             return ir.Succeeded;
         }
+
+        //bool AddUserAndRoleTwo(IncandescentDesigns.Models.ApplicationDbContext context)
+        //{
+        //    IdentityResult ir;
+        //    var rm = new RoleManager<IdentityRole>
+        //        (new RoleStore<IdentityRole>(context));
+        //    ir = rm.Create(new IdentityRole("user"));
+        //    var um = new UserManager<ApplicationUser>(
+        //        new UserStore<ApplicationUser>(context));
+        //    var user = new ApplicationUser()
+        //    {
+        //        UserName = "jgersztyn13@wou.edu",
+        //        Email = "jgersztyn13@wou.edu",
+        //        EmailConfirmed = true,
+        //    };
+        //    ir = um.Create(user, "1q2w#E$R");
+        //    if (ir.Succeeded == false)
+        //        return ir.Succeeded;
+        //    ir = um.AddToRole(user.Id, "user");
+        //    return ir.Succeeded;
+        //}
     }
 }
